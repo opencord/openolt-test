@@ -22,7 +22,7 @@ VERSION           ?= $(shell cat ./VERSION)
 GTEST_VER         ?= release-1.8.0
 CMOCK_VER         ?= 0207b30
 GMOCK_GLOBAL_VER  ?= 1.0.2
-GRPC_VER          ?= v1.27.1
+GRPC_VER          ?= v1.31.1
 
 # Docker related
 DOCKER_LABEL_VCS_DIRTY     = false
