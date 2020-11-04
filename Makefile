@@ -23,6 +23,7 @@ GTEST_VER         ?= release-1.8.0
 CMOCK_VER         ?= 0207b30
 GMOCK_GLOBAL_VER  ?= 1.0.2
 GRPC_VER          ?= v1.31.1
+PCAPPLUSPLUS_VER  ?= v20.08
 
 # Docker related
 DOCKER_LABEL_VCS_DIRTY     = false
@@ -46,7 +47,8 @@ DOCKER_BUILD_ARGS ?= \
 	--build-arg GTEST_VER=${GTEST_VER} \
 	--build-arg CMOCK_VER=${CMOCK_VER} \
 	--build-arg GMOCK_GLOBAL_VER=${GMOCK_GLOBAL_VER} \
-	--build-arg GRPC_VER=${GRPC_VER}
+	--build-arg GRPC_VER=${GRPC_VER} \
+	--build-arg PCAPPLUSPLUS_VER=${PCAPPLUSPLUS_VER}
 
 .DEFAULT_GOAL := build
 

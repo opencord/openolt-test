@@ -33,9 +33,10 @@ RUN apt-get update && apt-get -q -y install \
     ccache=3.2.4-1 \
     g++-4.9=4.9.3-13ubuntu2 \
     wget=1.17.1-1ubuntu1.5 \
-    ca-certificates=20190110~16.04.1 \
+    ca-certificates=20201027ubuntu0.16.04.1 \
     lcov=1.12-2 \
-    libgoogle-glog-dev=0.3.4-0.1 && \
+    libgoogle-glog-dev=0.3.4-0.1 \
+    libpcap-dev=1.7.4-2ubuntu0.1 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -49,6 +50,13 @@ RUN cd /tmp && git clone --recurse-submodules -b $GRPC_VER https://github.com/gr
     cd /tmp/grpc && mkdir -p cmake/build && cd cmake/build && cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF ../.. && \
     make && make install && cd /tmp && \
     rm -rf /tmp/grpc
+
+ARG PCAPPLUSPLUS_VER
+# Download, compile and install PcapPlusPlus. Remove the source and build artificats after install.
+RUN cd /tmp && git clone -b $PCAPPLUSPLUS_VER https://github.com/seladb/PcapPlusPlus.git && \
+    cd /tmp/PcapPlusPlus && ./configure-linux.sh —default && \
+    make all && make install && cd /tmp && \
+    rm -rf /tmp/PcapPlusPlus
 
 ARG GTEST_VER
 # Download compile and install gtest library. Remove the source and build artificats after install.
